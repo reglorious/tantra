@@ -1,0 +1,41 @@
+{
+  "threats": [
+    {
+      "Threat ID": "EFS_001",
+      "Threat Name": "Unrestricted Root Directory Access",
+      "Source": "Unauthorized or Over-Privileged Users",
+      "Target": "AWS EFS Access Point",
+      "Description": "If an EFS access point does not enforce a specific root directory, users may inadvertently or maliciously gain access to more of the file system than intended.",
+      "Mitigation": "Configure EFS access points to strictly define and enforce the root directory path, restricting access to only necessary file system paths.",
+      "Service": "Amazon EFS"
+    },
+    {
+      "Threat ID": "EFS_002",
+      "Threat Name": "User Identity Not Enforced",
+      "Source": "Malicious Users Masquerading as Another UID/GID",
+      "Target": "AWS EFS Access Point",
+      "Description": "Without enforcing user identity, the EFS access point allows clients to override UID/GID, potentially leading to privilege escalation or unauthorized data access.",
+      "Mitigation": "Enable user identity enforcement on EFS access points, ensuring the correct UID/GID are applied to requests and preventing unauthorized privilege changes.",
+      "Service": "Amazon EFS"
+    },
+    {
+      "Threat ID": "EFS_003",
+      "Threat Name": "Unencrypted File System",
+      "Source": "Anyone with Underlying Storage Access",
+      "Target": "AWS EFS File System",
+      "Description": "An unencrypted EFS file system risks unauthorized access to data at rest if the storage layer is compromised.",
+      "Mitigation": "Enable encryption at rest using AWS KMS to ensure data remains protected from unauthorized access to underlying storage.",
+      "Service": "Amazon EFS"
+    },
+    {
+      "Threat ID": "EFS_004",
+      "Threat Name": "Lack of Backup Coverage",
+      "Source": "Accidental Deletion or Data Corruption",
+      "Target": "AWS EFS File System",
+      "Description": "If an EFS file system is not included in a backup plan, data could be irrecoverably lost in the event of deletion or corruption.",
+      "Mitigation": "Use AWS Backup or other solutions to include EFS in a formal backup plan, ensuring point-in-time restore capabilities.",
+      "Service": "Amazon EFS"
+    }
+  ]
+}
+

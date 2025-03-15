@@ -1,0 +1,40 @@
+{
+  "threats": [
+    {
+      "Threat ID": "NETFW_001",
+      "Threat Name": "Unsafe Default Action for Fragment Packets",
+      "Source": "Malicious External Traffic Sending Fragmented Packets",
+      "Target": "AWS Network Firewall Policy for Fragment Packets",
+      "Description": "If the default action for fragmented packets is not properly set (e.g., not dropping or passing to the stateful engine), an attacker may bypass network inspection by sending fragmented traffic.",
+      "Mitigation": "Configure the stateless fragment default actions to drop suspicious fragments or forward them to a stateful rule engine for deeper inspection.",
+      "Service": "AWS Network Firewall"
+    },
+    {
+      "Threat ID": "NETFW_002",
+      "Threat Name": "Insecure Default Action for Full Packets",
+      "Source": "Malicious External Traffic Sending Full Packets",
+      "Target": "AWS Network Firewall Policy for Full Packets",
+      "Description": "If the firewall policy’s default action for full packets is misconfigured, potentially harmful or unknown traffic may pass uninspected.",
+      "Mitigation": "Set the default action to drop unauthorized traffic or forward it to a robust rule set, ensuring unknown packets don’t bypass inspection.",
+      "Service": "AWS Network Firewall"
+    },
+    {
+      "Threat ID": "NETFW_003",
+      "Threat Name": "Firewall Policy Without Rule Groups",
+      "Source": "Attackers Exploiting Lack of Configured Rules",
+      "Target": "AWS Network Firewall Policy",
+      "Description": "A firewall policy not associated with any rule groups effectively provides no filtering or inspection, allowing all traffic by default.",
+      "Mitigation": "Attach stateless and stateful rule groups to the firewall policy to enforce inspection and filtering on network traffic.",
+      "Service": "AWS Network Firewall"
+    },
+    {
+      "Threat ID": "NETFW_004",
+      "Threat Name": "Empty Stateless Rule Group",
+      "Source": "Unfiltered Traffic from External Sources",
+      "Target": "AWS Network Firewall Stateless Rule Group",
+      "Description": "If a stateless rule group is configured but contains no actual rules, it fails to inspect or filter traffic, leaving the network open to threats.",
+      "Mitigation": "Ensure each stateless rule group includes well-defined rules that match and take action on relevant traffic patterns.",
+      "Service": "AWS Network Firewall"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "threats": [
+    {
+      "Threat ID": "LAMBDA_001",
+      "Threat Name": "Missing Dead-Letter Queue",
+      "Source": "Unhandled Errors from Event Triggers",
+      "Target": "AWS Lambda Function",
+      "Description": "Lambda functions without a configured dead-letter queue (DLQ) can silently lose failed events, hindering troubleshooting and error handling.",
+      "Mitigation": "Configure a DLQ or a failure destination for Lambda to capture and inspect unprocessed events.",
+      "Service": "AWS Lambda"
+    },
+    {
+      "Threat ID": "LAMBDA_002",
+      "Threat Name": "Outdated or Unsupported Runtime",
+      "Source": "Vulnerable or Legacy Runtime Environment",
+      "Target": "AWS Lambda Function",
+      "Description": "Using an unapproved or outdated runtime increases the risk of vulnerabilities due to security patches not being applied.",
+      "Mitigation": "Adopt supported, up-to-date runtimes from AWS’s recommended list to ensure timely patches and compatibility.",
+      "Service": "AWS Lambda"
+    },
+    {
+      "Threat ID": "LAMBDA_003",
+      "Threat Name": "Lambda Deployed Outside VPC",
+      "Source": "Public Network Traffic",
+      "Target": "AWS Lambda Function",
+      "Description": "Running Lambda functions outside a VPC can expose them to uncontrolled public endpoints, increasing attack surface and risking unauthorized access.",
+      "Mitigation": "Deploy Lambda functions within a VPC, use private subnets, and control inbound/outbound traffic with security groups and routing configurations.",
+      "Service": "AWS Lambda"
+    },
+    {
+      "Threat ID": "LAMBDA_004",
+      "Threat Name": "Single-AZ VPC Deployment",
+      "Source": "Availability Zone Outage",
+      "Target": "AWS Lambda Function",
+      "Description": "If Lambda functions are tied to a single Availability Zone, an AZ outage may disrupt service, causing potential downtime.",
+      "Mitigation": "Configure Lambda functions to use multiple AZ subnets for improved fault tolerance and availability.",
+      "Service": "AWS Lambda"
+    }
+  ]
+}

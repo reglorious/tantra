@@ -1,0 +1,157 @@
+{
+  "threats": [
+    {
+      "Threat ID": "RDS_001",
+      "Threat Name": "Backups Disabled",
+      "Source": "Misconfiguration or Negligent Admin",
+      "Target": "AWS RDS DBInstance",
+      "Description": "If backups are not properly enabled for RDS instances, data recovery from failures is jeopardized.",
+      "Mitigation": "Enable automated backups to ensure point-in-time recovery of database instances.",
+      "Service": "Amazon RDS"
+    },
+    {
+      "Threat ID": "RDS_002",
+      "Threat Name": "No Automatic Minor Version Upgrades",
+      "Source": "Outdated or Vulnerable Engine Versions",
+      "Target": "AWS RDS DBInstance",
+      "Description": "Without automatic minor version upgrades, instances may continue running outdated engines with known security vulnerabilities.",
+      "Mitigation": "Enable automatic minor version upgrades to ensure timely patching of RDS engine versions.",
+      "Service": "Amazon RDS"
+    },
+    {
+      "Threat ID": "RDS_003",
+      "Threat Name": "Default Administrator in RDS Cluster",
+      "Source": "Unauthorized Actors Exploiting Default Credentials",
+      "Target": "AWS RDS DBCluster",
+      "Description": "Leaving a default admin account enabled with potentially default credentials or well-known usernames may allow attackers easier entry.",
+      "Mitigation": "Disable or rename default admin accounts and set strong, unique passwords.",
+      "Service": "Amazon RDS"
+    },
+    {
+      "Threat ID": "RDS_004",
+      "Threat Name": "Deletion Protection Disabled for RDS Cluster",
+      "Source": "Accidental or Malicious Deletion",
+      "Target": "AWS RDS DBCluster",
+      "Description": "Clusters without deletion protection enabled can be removed unintentionally or maliciously, leading to data loss.",
+      "Mitigation": "Enable deletion protection to prevent accidental or unauthorized cluster removal.",
+      "Service": "Amazon RDS"
+    },
+    {
+      "Threat ID": "RDS_005",
+      "Threat Name": "IAM Authentication Disabled (Cluster)",
+      "Source": "Legacy Credential Management Practices",
+      "Target": "AWS RDS DBCluster",
+      "Description": "Without IAM database authentication, credentials may be managed in ways that increase the risk of compromise or mismanagement.",
+      "Mitigation": "Enable IAM authentication for RDS clusters to simplify credential management and strengthen access control.",
+      "Service": "Amazon RDS"
+    },
+    {
+      "Threat ID": "RDS_006",
+      "Threat Name": "Single AZ Configuration (Cluster)",
+      "Source": "Regional Outage or Hardware Failure",
+      "Target": "AWS RDS DBCluster",
+      "Description": "Without Multi-AZ enabled, cluster availability could be disrupted if the primary Availability Zone experiences an outage.",
+      "Mitigation": "Configure RDS clusters in Multi-AZ deployments for high availability and fault tolerance.",
+      "Service": "Amazon RDS"
+    },
+    {
+      "Threat ID": "RDS_007",
+      "Threat Name": "Enhanced Monitoring Disabled",
+      "Source": "Operational Blind Spots",
+      "Target": "AWS RDS DBInstance",
+      "Description": "Disabling enhanced monitoring hinders the ability to detect and diagnose performance or security issues in real time.",
+      "Mitigation": "Enable Enhanced Monitoring for detailed, real-time metrics on RDS instance performance.",
+      "Service": "Amazon RDS"
+    },
+    {
+      "Threat ID": "RDS_008",
+      "Threat Name": "Not Included in Backup Plan",
+      "Source": "Unprotected RDS Resources",
+      "Target": "AWS RDS",
+      "Description": "RDS resources not covered by a backup plan risk permanent data loss if the resource fails or is deleted.",
+      "Mitigation": "Add RDS instances to a backup plan using AWS Backup to ensure recoverability.",
+      "Service": "Amazon RDS"
+    },
+    {
+      "Threat ID": "RDS_009",
+      "Threat Name": "Default Administrator in RDS Instance",
+      "Source": "Unauthorized Actors Exploiting Default Credentials",
+      "Target": "AWS RDS DBInstance",
+      "Description": "Instances with default admin users configured may be more easily compromised by brute force or known username attacks.",
+      "Mitigation": "Disable or rename default admin accounts and use unique, strong passwords.",
+      "Service": "Amazon RDS"
+    },
+    {
+      "Threat ID": "RDS_010",
+      "Threat Name": "Deletion Protection Disabled for RDS Instance",
+      "Source": "Accidental or Malicious Deletion",
+      "Target": "AWS RDS DBInstance",
+      "Description": "An RDS instance can be unintentionally terminated or removed if not protected, resulting in data loss.",
+      "Mitigation": "Enable deletion protection to prevent unintentional database instance removal.",
+      "Service": "Amazon RDS"
+    },
+    {
+      "Threat ID": "RDS_011",
+      "Threat Name": "IAM Authentication Disabled (Instance)",
+      "Source": "Excess Reliance on Static Credentials",
+      "Target": "AWS RDS DBInstance",
+      "Description": "Not using IAM authentication increases the risk of credential compromise, as credentials must be handled and stored manually.",
+      "Mitigation": "Enable and enforce IAM authentication for secure and centralized credential management.",
+      "Service": "Amazon RDS"
+    },
+    {
+      "Threat ID": "RDS_012",
+      "Threat Name": "Public Access Enabled",
+      "Source": "External or Malicious Users on the Internet",
+      "Target": "AWS RDS DBInstance",
+      "Description": "Database instances configured for public access expand the attack surface, allowing direct access from the public internet.",
+      "Mitigation": "Disable public access and use private networking (VPC, security groups) to restrict access to trusted networks.",
+      "Service": "Amazon RDS"
+    },
+    {
+      "Threat ID": "RDS_013",
+      "Threat Name": "Logging and Auditing Disabled",
+      "Source": "Lack of Visibility on Database Activities",
+      "Target": "AWS RDS DBInstance",
+      "Description": "Without logging, malicious queries or unauthorized actions may go undetected, complicating forensics and compliance.",
+      "Mitigation": "Enable database logging (e.g., PostgreSQL logs, MySQL logs) and integrate them with monitoring/alerting solutions.",
+      "Service": "Amazon RDS"
+    },
+    {
+      "Threat ID": "RDS_014",
+      "Threat Name": "Single AZ Configuration (Instance)",
+      "Source": "AZ Outage or Infrastructure Failure",
+      "Target": "AWS RDS DBInstance",
+      "Description": "If an instance is not deployed in Multi-AZ mode, a failure or outage in one Availability Zone can result in downtime or data loss.",
+      "Mitigation": "Configure RDS instances in Multi-AZ for failover capability and higher availability.",
+      "Service": "Amazon RDS"
+    },
+    {
+      "Threat ID": "RDS_015",
+      "Threat Name": "Snapshots Not Encrypted",
+      "Source": "Exposed Backup Data",
+      "Target": "AWS RDS DBSnapshot or DBClusterSnapshot",
+      "Description": "Unencrypted snapshots can be accessed if compromised, potentially exposing sensitive data.",
+      "Mitigation": "Use KMS encryption for all database snapshots to protect data at rest.",
+      "Service": "Amazon RDS"
+    },
+    {
+      "Threat ID": "RDS_016",
+      "Threat Name": "Publicly Accessible Snapshots",
+      "Source": "Anyone on the Internet",
+      "Target": "AWS RDS DBSnapshot or DBClusterSnapshot",
+      "Description": "Snapshots configured for public access enable attackers to restore or view data without authorization.",
+      "Mitigation": "Disable public access for snapshots and ensure snapshots are shared only with authorized accounts.",
+      "Service": "Amazon RDS"
+    },
+    {
+      "Threat ID": "RDS_017",
+      "Threat Name": "Unencrypted RDS Storage",
+      "Source": "Unauthorized Access to Underlying Storage",
+      "Target": "AWS RDS DBInstance",
+      "Description": "Data at rest on an unencrypted RDS instance may be exposed if an attacker gains access to the underlying storage.",
+      "Mitigation": "Enable storage encryption using a customer-managed KMS key to secure data at rest.",
+      "Service": "Amazon RDS"
+    }
+  ]
+}

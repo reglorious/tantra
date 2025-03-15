@@ -1,0 +1,32 @@
+{
+  "threats": [
+    {
+      "Threat ID": "SM_001",
+      "Threat Name": "Unencrypted Endpoint Configuration",
+      "Source": "Unauthorized or Malicious User",
+      "Target": "Amazon SageMaker Endpoint Configuration",
+      "Description": "Without a KMS key configured for the SageMaker endpoint, data at rest may be unprotected and vulnerable to unauthorized access.",
+      "Mitigation": "Encrypt endpoint data using an AWS KMS customer-managed key to ensure secure storage and restricted access.",
+      "Service": "Amazon SageMaker"
+    },
+    {
+      "Threat ID": "SM_002",
+      "Threat Name": "Unencrypted Notebook Instance Data",
+      "Source": "Internal or External Attackers Accessing Unencrypted Storage",
+      "Target": "Amazon SageMaker Notebook Instance",
+      "Description": "If a SageMaker notebook instance lacks KMS-based encryption, sensitive data stored locally or in logs could be compromised.",
+      "Mitigation": "Configure a KMS key for notebook storage to protect data at rest and control key access policies.",
+      "Service": "Amazon SageMaker"
+    },
+    {
+      "Threat ID": "SM_003",
+      "Threat Name": "Direct Internet Access on Notebook",
+      "Source": "External Attackers from Public Internet",
+      "Target": "Amazon SageMaker Notebook Instance",
+      "Description": "A notebook instance accessible directly from the internet increases the risk of unauthorized access, data exfiltration, and potential compromise.",
+      "Mitigation": "Disable direct internet access and run the notebook in a private subnet within a VPC, restricting incoming and outgoing connections.",
+      "Service": "Amazon SageMaker"
+    }
+  ]
+}
+

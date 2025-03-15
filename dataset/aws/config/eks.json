@@ -1,0 +1,41 @@
+{
+  "threats": [
+    {
+      "Threat ID": "EKS_001",
+      "Threat Name": "Outdated EKS Cluster Version",
+      "Source": "Known Vulnerabilities in Older Kubernetes Versions",
+      "Target": "Amazon EKS Cluster",
+      "Description": "Running an EKS cluster on a version older than the minimum supported release exposes it to unpatched vulnerabilities and compatibility issues.",
+      "Mitigation": "Upgrade the EKS cluster to a supported version that receives security updates and aligns with AWS maintenance policies.",
+      "Service": "Amazon EKS"
+    },
+    {
+      "Threat ID": "EKS_002",
+      "Threat Name": "Unsupported EKS Cluster Version",
+      "Source": "Deprecated Kubernetes Release",
+      "Target": "Amazon EKS Cluster",
+      "Description": "Clusters running unsupported versions no longer receive updates, security patches, or official support, increasing the risk of exploits.",
+      "Mitigation": "Regularly check AWS documentation for current supported versions and upgrade clusters accordingly before deprecation deadlines.",
+      "Service": "Amazon EKS"
+    },
+    {
+      "Threat ID": "EKS_003",
+      "Threat Name": "Publicly Accessible EKS Endpoint",
+      "Source": "External Attackers",
+      "Target": "Amazon EKS Control Plane Endpoint",
+      "Description": "If the cluster endpoint is publicly exposed, unauthorized users on the internet can attempt to connect or launch attacks against the cluster.",
+      "Mitigation": "Disable public endpoint access or restrict it to specific trusted IP addresses, and enforce network security configurations.",
+      "Service": "Amazon EKS"
+    },
+    {
+      "Threat ID": "EKS_004",
+      "Threat Name": "Unencrypted EKS Secrets",
+      "Source": "Malicious Internal or External Actors",
+      "Target": "Amazon EKS Secrets",
+      "Description": "Storing Kubernetes secrets in plain text without encryption allows attackers with underlying storage access to read or exfiltrate sensitive data.",
+      "Mitigation": "Enable envelope encryption for EKS secrets using AWS KMS customer-managed keys to protect data at rest and limit key usage.",
+      "Service": "Amazon EKS"
+    }
+  ]
+}
+
