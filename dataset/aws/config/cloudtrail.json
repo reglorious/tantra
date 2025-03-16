@@ -1,0 +1,68 @@
+{
+  "threats": [
+    {
+      "Threat ID": "CT_001",
+      "Threat Name": "CloudTrail Not Enabled",
+      "Source": "Unauthorized or Undetected Activities",
+      "Target": "AWS CloudTrail Service",
+      "Description": "If CloudTrail is disabled, AWS API activities are not recorded, making it difficult to detect security events or perform audits.",
+      "Mitigation": "Enable CloudTrail across all regions and accounts to capture and monitor all API calls for compliance and security analysis.",
+      "Service": "AWS CloudTrail"
+    },
+    {
+      "Threat ID": "CT_002",
+      "Threat Name": "No CloudWatch Logs Integration",
+      "Source": "Unmonitored Real-Time Events",
+      "Target": "AWS CloudTrail Logs",
+      "Description": "Without integration to CloudWatch Logs, suspicious or unwanted API calls go unmonitored in real time, delaying incident detection.",
+      "Mitigation": "Enable CloudTrail logs to be sent to CloudWatch Logs for continuous monitoring and timely alerting on critical security events.",
+      "Service": "AWS CloudTrail"
+    },
+    {
+      "Threat ID": "CT_003",
+      "Threat Name": "Unencrypted CloudTrail Logs",
+      "Source": "Anyone with Access to Log Storage",
+      "Target": "AWS CloudTrail Logs at Rest",
+      "Description": "CloudTrail logs stored unencrypted in S3 can be read or tampered with by unauthorized actors with access to the underlying storage.",
+      "Mitigation": "Enable encryption using KMS customer-managed keys for CloudTrail logs to protect the data at rest.",
+      "Service": "AWS CloudTrail"
+    },
+    {
+      "Threat ID": "CT_004",
+      "Threat Name": "Missing Log File Integrity Validation",
+      "Source": "Malicious Actors Tampering with Logs",
+      "Target": "AWS CloudTrail Log Files",
+      "Description": "If log file validation is disabled, attackers can alter or remove log entries without easy detection, eroding forensic integrity.",
+      "Mitigation": "Enable log file validation to ensure each CloudTrail file’s authenticity and detect unauthorized modifications.",
+      "Service": "AWS CloudTrail"
+    },
+    {
+      "Threat ID": "CT_005",
+      "Threat Name": "S3 Data Event Logging Disabled",
+      "Source": "Unauthorized Data Operations in S3",
+      "Target": "Amazon S3 Buckets and Objects",
+      "Description": "When S3 data event logging is disabled, activity such as object-level reads/writes goes untracked, making it harder to spot malicious or accidental data access.",
+      "Mitigation": "Enable S3 data events in CloudTrail to record object-level activities and maintain a comprehensive audit trail.",
+      "Service": "AWS CloudTrail"
+    },
+    {
+      "Threat ID": "CT_006",
+      "Threat Name": "Security Trail Not Enabled",
+      "Source": "Gaps in Compliance or Forensic Capabilities",
+      "Target": "AWS CloudTrail Security Trail",
+      "Description": "Without a dedicated security trail, vital event categories (e.g., management events) may not be comprehensively tracked for security auditing.",
+      "Mitigation": "Enable a dedicated CloudTrail security trail that captures all necessary management and data events for security governance.",
+      "Service": "AWS CloudTrail"
+    },
+    {
+      "Threat ID": "CT_007",
+      "Threat Name": "Single Region CloudTrail",
+      "Source": "Cross-Region Attacks or Activities",
+      "Target": "AWS CloudTrail Logging Scope",
+      "Description": "If CloudTrail is limited to one region, unauthorized or suspicious activities in other regions are not captured or monitored.",
+      "Mitigation": "Enable multi-region CloudTrail to ensure all API activity across all regions is captured for comprehensive visibility.",
+      "Service": "AWS CloudTrail"
+    }
+  ]
+}
+

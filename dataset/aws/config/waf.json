@@ -1,0 +1,50 @@
+{
+  "threats": [
+    {
+      "Threat ID": "WAF_001",
+      "Threat Name": "ALB Not Protected by WAF",
+      "Source": "Malicious Layer 7 Web Traffic",
+      "Target": "Application Load Balancer",
+      "Description": "If ALB is not associated with AWS WAF, layer 7 web attacks (SQL injection, cross-site scripting, etc.) can pass through unfiltered.",
+      "Mitigation": "Enable AWS WAF on the ALB to filter malicious requests with configured rules or rule groups.",
+      "Service": "AWS WAF"
+    },
+    {
+      "Threat ID": "WAF_002",
+      "Threat Name": "API Gateway Not Protected by WAF",
+      "Source": "Malicious Requests or Bots",
+      "Target": "Amazon API Gateway Stage",
+      "Description": "Without WAF protection, the API endpoint is exposed to web exploits and denial-of-service attempts that bypass standard controls.",
+      "Mitigation": "Associate AWS WAF with the API Gateway stage to detect and block suspicious or malicious traffic.",
+      "Service": "AWS WAF"
+    },
+    {
+      "Threat ID": "WAF_003",
+      "Threat Name": "Empty WAF Regional Rule",
+      "Source": "Unfiltered Malicious Traffic",
+      "Target": "AWS WAFRegional Rule",
+      "Description": "A WAF rule that has no conditions or statements will not inspect or filter any traffic, leaving potential attacks unchecked.",
+      "Mitigation": "Populate WAF rules with relevant conditions or statements (e.g., IP match conditions, SQL injection match conditions).",
+      "Service": "AWS WAF"
+    },
+    {
+      "Threat ID": "WAF_004",
+      "Threat Name": "Empty WAF Regional Rule Group",
+      "Source": "Unblocked Exploits or Bot Traffic",
+      "Target": "AWS WAFRegional Rule Group",
+      "Description": "If a rule group is empty, it provides no additional protection and cannot block or filter malicious requests as intended.",
+      "Mitigation": "Define rules and conditions in the WAF rule group to address specific threats and strengthen web application defenses.",
+      "Service": "AWS WAF"
+    },
+    {
+      "Threat ID": "WAF_005",
+      "Threat Name": "Empty WAF Regional Web ACL",
+      "Source": "Variety of Web Application Attacks",
+      "Target": "AWS WAFRegional Web ACL",
+      "Description": "A Web ACL with no rules or conditions does not provide any enforcement or threat mitigation, leaving the application unprotected.",
+      "Mitigation": "Add rules or rule groups to the Web ACL that filter known bad traffic patterns or behaviors (e.g., SQL injection, cross-site scripting).",
+      "Service": "AWS WAF"
+    }
+  ]
+}
+

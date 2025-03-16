@@ -1,0 +1,77 @@
+{
+  "threats": [
+    {
+      "Threat ID": "OS_001",
+      "Threat Name": "Access Control Not Enabled",
+      "Source": "Unauthorized External or Internal Users",
+      "Target": "Amazon OpenSearch Service Domain",
+      "Description": "Without appropriate access control (e.g., domain access policies or fine-grained access control) attackers or unauthorized users could read, modify, or delete data in the domain.",
+      "Mitigation": "Enable domain access policies and, optionally, fine-grained access control to limit user permissions and enforce IAM-based authentication.",
+      "Service": "Amazon OpenSearch Service"
+    },
+    {
+      "Threat ID": "OS_002",
+      "Threat Name": "Audit Logging Disabled",
+      "Source": "Undetected Malicious or Unwanted Activity",
+      "Target": "Amazon OpenSearch Service Domain",
+      "Description": "If audit logs are not enabled, suspicious operations and access attempts will not be captured, complicating incident investigation and compliance checks.",
+      "Mitigation": "Enable audit logs for detailed tracking of user operations and events, helping to detect anomalies and unauthorized actions.",
+      "Service": "Amazon OpenSearch Service"
+    },
+    {
+      "Threat ID": "OS_003",
+      "Threat Name": "Single Data Node or Insufficient Fault Tolerance",
+      "Source": "Hardware or AZ Failure",
+      "Target": "Amazon OpenSearch Service Data Nodes",
+      "Description": "Running data nodes without fault tolerance (e.g., only one node or insufficient replica shards) could result in data loss or service downtime if a node fails.",
+      "Mitigation": "Configure multi-node clusters with replica shards in multiple Availability Zones to ensure high availability and prevent data loss.",
+      "Service": "Amazon OpenSearch Service"
+    },
+    {
+      "Threat ID": "OS_004",
+      "Threat Name": "Unencrypted Data at Rest",
+      "Source": "Anyone with Access to Underlying Storage",
+      "Target": "Amazon OpenSearch Service Domain Data",
+      "Description": "Storing domain data unencrypted allows unauthorized actors with access to the physical storage to read sensitive data.",
+      "Mitigation": "Enable encryption at rest using AWS KMS keys to secure data and restrict key usage via IAM policies.",
+      "Service": "Amazon OpenSearch Service"
+    },
+    {
+      "Threat ID": "OS_005",
+      "Threat Name": "HTTPS Not Required for Client Connections",
+      "Source": "Network Eavesdroppers intercepting HTTP Traffic",
+      "Target": "Amazon OpenSearch Service Domain Endpoint",
+      "Description": "Allowing unencrypted HTTP connections exposes data in transit to eavesdropping and tampering, compromising confidentiality and integrity.",
+      "Mitigation": "Require HTTPS for all connections to the OpenSearch domain to ensure end-to-end encryption of data in transit.",
+      "Service": "Amazon OpenSearch Service"
+    },
+    {
+      "Threat ID": "OS_006",
+      "Threat Name": "Publicly Accessible Domain",
+      "Source": "External Attackers Scanning Public Endpoints",
+      "Target": "Amazon OpenSearch Service Domain",
+      "Description": "If the domain is not restricted to a VPC, unauthorized users from the internet can attempt to access or disrupt the service.",
+      "Mitigation": "Configure the domain to run within a VPC and restrict network access to only trusted IP ranges or resources.",
+      "Service": "Amazon OpenSearch Service"
+    },
+    {
+      "Threat ID": "OS_007",
+      "Threat Name": "No Logs Pushed to CloudWatch",
+      "Source": "Undetected Operational or Security Issues",
+      "Target": "Amazon OpenSearch Service Domain Logs",
+      "Description": "Without streaming logs to CloudWatch, administrators lack real-time visibility into domain performance or potential security events, delaying incident response.",
+      "Mitigation": "Enable CloudWatch logging for domain logs to facilitate continuous monitoring, alerting, and troubleshooting.",
+      "Service": "Amazon OpenSearch Service"
+    },
+    {
+      "Threat ID": "OS_008",
+      "Threat Name": "Node-to-Node Encryption Disabled",
+      "Source": "Malicious Actor on the Same Network or Host",
+      "Target": "Amazon OpenSearch Service Nodes",
+      "Description": "If node-to-node encryption is disabled, data traveling between cluster nodes in transit could be intercepted or modified by an attacker with network access.",
+      "Mitigation": "Enable node-to-node encryption to ensure that traffic within the cluster remains secure and cannot be intercepted or altered.",
+      "Service": "Amazon OpenSearch Service"
+    }
+  ]
+}
+

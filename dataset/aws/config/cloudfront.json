@@ -1,0 +1,95 @@
+{
+  "threats": [
+    {
+      "Threat ID": "CF_001",
+      "Threat Name": "Access Logging Disabled",
+      "Source": "Unknown Client Requests",
+      "Target": "Amazon CloudFront Distribution",
+      "Description": "If CloudFront access logs are not enabled, it becomes difficult to track and audit client requests, making suspicious activities or attacks more likely to go unnoticed.",
+      "Mitigation": "Enable access logging in CloudFront and store logs securely (e.g., in an S3 bucket with restricted access) for monitoring and forensics.",
+      "Service": "Amazon CloudFront"
+    },
+    {
+      "Threat ID": "CF_002",
+      "Threat Name": "Distribution Not Protected by WAF",
+      "Source": "Malicious Web Traffic (e.g., SQL injection, XSS)",
+      "Target": "Amazon CloudFront Distribution",
+      "Description": "Without an AWS WAF association, CloudFront distributions could be exposed to a variety of Layer 7 attacks, including injection and denial of service attempts.",
+      "Mitigation": "Associate the distribution with AWS WAF and configure appropriate rules to filter out known attack vectors.",
+      "Service": "Amazon CloudFront"
+    },
+    {
+      "Threat ID": "CF_003",
+      "Threat Name": "No Custom SSL Certificate",
+      "Source": "Man-in-the-Middle Attacks on Viewer Connections",
+      "Target": "Amazon CloudFront Distribution",
+      "Description": "If the distribution is not using a custom SSL certificate, the site may present a less trusted or weaker TLS configuration to end users, potentially undermining security and user trust.",
+      "Mitigation": "Use a custom SSL/TLS certificate (e.g., from ACM) to ensure secure and authenticated connections for CloudFront distributions.",
+      "Service": "Amazon CloudFront"
+    },
+    {
+      "Threat ID": "CF_004",
+      "Threat Name": "No Default Root Object Configured",
+      "Source": "Unspecified or Redirected Client Requests",
+      "Target": "Amazon CloudFront Distribution",
+      "Description": "Without a default root object, users accessing the distribution root may encounter errors or be directed to unintended resources, increasing the risk of misconfigurations or unauthorized content serving.",
+      "Mitigation": "Specify a default root object (e.g., index.html) so that client requests to the distribution’s root are consistently and safely handled.",
+      "Service": "Amazon CloudFront"
+    },
+    {
+      "Threat ID": "CF_005",
+      "Threat Name": "Deprecated SSL/TLS Protocols in Use",
+      "Source": "Attackers Exploiting Weak Encryption",
+      "Target": "Amazon CloudFront Distribution",
+      "Description": "If the distribution allows old or deprecated SSL/TLS protocols (e.g., SSLv3, TLS 1.0), attackers can leverage known vulnerabilities to eavesdrop or tamper with data in transit.",
+      "Mitigation": "Restrict CloudFront to only modern TLS protocols and ciphers (e.g., TLS 1.2 or 1.3) in the security policy configuration.",
+      "Service": "Amazon CloudFront"
+    },
+    {
+      "Threat ID": "CF_006",
+      "Threat Name": "No Origin Access Identity (OAI)",
+      "Source": "Public or Unauthorized Access to Origin",
+      "Target": "Amazon CloudFront Distribution and Underlying Origin (e.g., S3)",
+      "Description": "Without an OAI, content origins such as Amazon S3 could be publicly accessible, allowing direct bypass of CloudFront or unauthorized content retrieval.",
+      "Mitigation": "Enable an origin access identity for private content in S3, ensuring only CloudFront can read objects from the origin.",
+      "Service": "Amazon CloudFront"
+    },
+    {
+      "Threat ID": "CF_007",
+      "Threat Name": "No Origin Failover Configuration",
+      "Source": "Single Point of Failure (Primary Origin)",
+      "Target": "Amazon CloudFront Distribution",
+      "Description": "If failover is not enabled and the primary origin becomes unavailable, content delivery may be disrupted, impacting user experience and availability.",
+      "Mitigation": "Configure origin failover with a secondary origin to maintain high availability if the primary origin fails.",
+      "Service": "Amazon CloudFront"
+    },
+    {
+      "Threat ID": "CF_008",
+      "Threat Name": "Server Name Indication (SNI) Not Enabled",
+      "Source": "Outdated Browsers or Unsecured Connections",
+      "Target": "Amazon CloudFront Distribution",
+      "Description": "Disabling SNI can limit the use of secure connections on certain configurations and might force fallback to weaker security measures, risking data interception.",
+      "Mitigation": "Enable SNI in CloudFront to support secure TLS connections for modern browsers and reduce the risk of fallback to insecure ciphers.",
+      "Service": "Amazon CloudFront"
+    },
+    {
+      "Threat ID": "CF_009",
+      "Threat Name": "Unencrypted Traffic from CloudFront to Origin",
+      "Source": "Network Eavesdroppers on the Path to the Origin",
+      "Target": "Amazon CloudFront Distribution and Origin",
+      "Description": "If the connection between CloudFront and its origin is not encrypted, an attacker on the network path can intercept or modify data in transit.",
+      "Mitigation": "Enable HTTPS for origin connections to ensure end-to-end encryption and integrity of data from CloudFront to the origin.",
+      "Service": "Amazon CloudFront"
+    },
+    {
+      "Threat ID": "CF_010",
+      "Threat Name": "Non-HTTPS Viewer Policy",
+      "Source": "Man-in-the-Middle Attackers on the Viewer Connection",
+      "Target": "Amazon CloudFront Distribution",
+      "Description": "Allowing HTTP connections from the viewer to CloudFront can lead to data exposure or tampering in transit, especially for sensitive information.",
+      "Mitigation": "Enforce HTTPS-only viewer connections to protect the confidentiality and integrity of content delivered by CloudFront.",
+      "Service": "Amazon CloudFront"
+    }
+  ]
+}
+

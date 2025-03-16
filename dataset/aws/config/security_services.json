@@ -1,0 +1,365 @@
+{
+  "threats": [
+    {
+      "Threat ID": "SEC_001",
+      "Threat Name": "Stale IAM Access Keys",
+      "Source": "Compromised or Long-Lived IAM Credentials",
+      "Target": "AWS IAM User Credentials",
+      "Description": "Access keys that are not rotated regularly can be stolen or brute-forced, allowing unauthorized access for extended periods.",
+      "Mitigation": "Rotate IAM access keys within the recommended timeframe (e.g., 90 days) to reduce the risk of credential compromise.",
+      "Service": "AWS IAM"
+    },
+    {
+      "Threat ID": "SEC_002",
+      "Threat Name": "Account Not in AWS Organizations",
+      "Source": "Inconsistent Multi-Account Governance",
+      "Target": "AWS Account Structure",
+      "Description": "If an account isn’t part of AWS Organizations, centralized governance, security baselines, and billing oversight can be bypassed or inconsistent.",
+      "Mitigation": "Attach the standalone AWS account to an AWS Organization for consolidated management and consistent policy enforcement.",
+      "Service": "AWS Organizations"
+    },
+    {
+      "Threat ID": "SEC_003",
+      "Threat Name": "Expiring or Expired ACM Certificates",
+      "Source": "Unpatched or Neglected Certificate Renewals",
+      "Target": "AWS ACM Certificate",
+      "Description": "An SSL/TLS certificate that is close to or past its expiration can break secure connections and expose data in transit to man-in-the-middle attacks.",
+      "Mitigation": "Renew or replace expiring certificates ahead of the expiration date to maintain secure communication channels.",
+      "Service": "AWS Certificate Manager"
+    },
+    {
+      "Threat ID": "SEC_004",
+      "Threat Name": "ALB Without WAF Protection",
+      "Source": "Malicious Web Traffic",
+      "Target": "Application Load Balancer",
+      "Description": "If an ALB is not associated with an AWS WAF Web ACL, it may allow SQL injection, cross-site scripting, and other Layer 7 attacks.",
+      "Mitigation": "Attach a WAF Web ACL to the ALB and configure rules to block or filter malicious requests.",
+      "Service": "AWS WAF / Elastic Load Balancing"
+    },
+    {
+      "Threat ID": "SEC_005",
+      "Threat Name": "API Gateway Not Associated with WAF",
+      "Source": "External Attacker or Malicious Bots",
+      "Target": "Amazon API Gateway Stage",
+      "Description": "An API endpoint lacking WAF protection is more susceptible to exploitation of common vulnerabilities (e.g., injection attacks).",
+      "Mitigation": "Integrate AWS WAF with the API Gateway stage to detect and block suspicious requests.",
+      "Service": "AWS API Gateway / AWS WAF"
+    },
+    {
+      "Threat ID": "SEC_006",
+      "Threat Name": "API Gateway Execution Logging Disabled",
+      "Source": "Hidden Malicious or Erroneous API Calls",
+      "Target": "Amazon API Gateway Stage",
+      "Description": "Without execution logs, anomalous behavior or misconfigurations remain unnoticed, complicating security audits and incident response.",
+      "Mitigation": "Enable execution logging and send logs to CloudWatch for real-time monitoring and security analysis.",
+      "Service": "AWS API Gateway"
+    },
+    {
+      "Threat ID": "SEC_007",
+      "Threat Name": "CloudTrail Not Integrated with CloudWatch Logs",
+      "Source": "Delayed or Missed Detection of Threat Events",
+      "Target": "AWS CloudTrail Logs",
+      "Description": "Without sending CloudTrail logs to CloudWatch, administrators lack near real-time alerts on unauthorized activities.",
+      "Mitigation": "Configure CloudTrail to stream logs to CloudWatch Logs, enabling continuous monitoring and automated alerting.",
+      "Service": "AWS CloudTrail / Amazon CloudWatch"
+    },
+    {
+      "Threat ID": "SEC_008",
+      "Threat Name": "CloudTrail Not Enabled",
+      "Source": "Unlogged API Actions",
+      "Target": "AWS Account",
+      "Description": "If CloudTrail is disabled, critical API events go unrecorded, preventing audits and incident investigations.",
+      "Mitigation": "Enable CloudTrail across all regions and organizations to maintain a full record of API activity.",
+      "Service": "AWS CloudTrail"
+    },
+    {
+      "Threat ID": "SEC_009",
+      "Threat Name": "Unencrypted CloudTrail Logs",
+      "Source": "Unauthorized Access to Log Storage",
+      "Target": "AWS CloudTrail Log Files",
+      "Description": "Storing unencrypted logs risks exposure or tampering of sensitive information if the log storage is compromised.",
+      "Mitigation": "Enable SSE-KMS or SSE-S3 encryption for CloudTrail logs to secure data at rest.",
+      "Service": "AWS CloudTrail"
+    },
+    {
+      "Threat ID": "SEC_010",
+      "Threat Name": "CloudTrail Log File Validation Disabled",
+      "Source": "Malicious Modification of Log Files",
+      "Target": "AWS CloudTrail Log Files",
+      "Description": "Without file validation, tampered logs could go undetected, impacting the reliability of forensic data.",
+      "Mitigation": "Enable log file integrity validation in CloudTrail to detect unauthorized modifications.",
+      "Service": "AWS CloudTrail"
+    },
+    {
+      "Threat ID": "SEC_011",
+      "Threat Name": "No Dedicated Security Trail",
+      "Source": "Gaps in CloudTrail Coverage",
+      "Target": "AWS CloudTrail Configuration",
+      "Description": "If a dedicated security trail is not enabled, certain types of events may be overlooked or conflated with other logs.",
+      "Mitigation": "Enable a dedicated security trail capturing all management and data events relevant to security use cases.",
+      "Service": "AWS CloudTrail"
+    },
+    {
+      "Threat ID": "SEC_012",
+      "Threat Name": "CloudWatch Alarms Missing Actions",
+      "Source": "Unresponded Alerts",
+      "Target": "Amazon CloudWatch Alarm",
+      "Description": "Alarms without defined actions do not trigger automated remediation or notifications, delaying incident response.",
+      "Mitigation": "Configure alarm actions (e.g., SNS notifications, Auto Scaling policies) for triggered alarms, ensuring timely responses.",
+      "Service": "Amazon CloudWatch"
+    },
+    {
+      "Threat ID": "SEC_013",
+      "Threat Name": "KMS Key Backing Rotation Disabled",
+      "Source": "Stale Keys with Increased Exposure",
+      "Target": "AWS KMS Customer-Managed Key",
+      "Description": "A key that is never rotated can accumulate risk from extended usage, making it easier for adversaries to exploit if compromised.",
+      "Mitigation": "Enable automatic key rotation for KMS CMKs to reduce potential exposure from a compromised key.",
+      "Service": "AWS KMS"
+    },
+    {
+      "Threat ID": "SEC_014",
+      "Threat Name": "ELB Logging Disabled",
+      "Source": "Unmonitored Traffic Flow",
+      "Target": "Classic Load Balancer / Application Load Balancer / Network Load Balancer",
+      "Description": "Without load balancer access logs, suspicious requests cannot be audited or traced, impeding threat detection and forensics.",
+      "Mitigation": "Enable access logging for all active load balancers and store logs securely in S3 for analysis.",
+      "Service": "Elastic Load Balancing"
+    },
+    {
+      "Threat ID": "SEC_015",
+      "Threat Name": "GuardDuty Not Enabled or Not Centralized",
+      "Source": "Unanalyzed Security Threats",
+      "Target": "AWS Account Threat Detection",
+      "Description": "If GuardDuty is disabled or not set up in a centralized manner, suspicious activities across multiple accounts can go undetected or siloed.",
+      "Mitigation": "Enable GuardDuty in all accounts and regions, and aggregate findings in a centralized security account for complete coverage.",
+      "Service": "Amazon GuardDuty"
+    },
+    {
+      "Threat ID": "SEC_016",
+      "Threat Name": "GuardDuty Findings Not Archived",
+      "Source": "Persistently Unacknowledged Security Issues",
+      "Target": "Amazon GuardDuty Findings",
+      "Description": "If findings remain unarchived for extended periods, it may indicate critical alerts are unresolved or ignored.",
+      "Mitigation": "Review and address GuardDuty findings. Mark them archived or resolved once mitigated to maintain a clean, actionable alert set.",
+      "Service": "Amazon GuardDuty"
+    },
+    {
+      "Threat ID": "SEC_017",
+      "Threat Name": "Customer IAM Policy Allowing Blocked KMS Actions",
+      "Source": "Inadvertent or Overly Permissive KMS Access",
+      "Target": "AWS IAM Customer-Managed Policy",
+      "Description": "A policy that allows kms:Decrypt or kms:ReEncryptFrom can enable unauthorized decryption of sensitive data if misused.",
+      "Mitigation": "Restrict or remove blocked KMS actions from IAM policies to prevent unauthorized data decryption or re-encryption.",
+      "Service": "AWS IAM / AWS KMS"
+    },
+    {
+      "Threat ID": "SEC_018",
+      "Threat Name": "IAM Group Has No Users",
+      "Source": "Orphaned IAM Group",
+      "Target": "AWS IAM Group",
+      "Description": "Groups without any users may be a configuration error, leading to confusion or leftover privileges if a user is re-added incorrectly.",
+      "Mitigation": "Either remove empty IAM groups or assign appropriate users. Regularly audit group membership for consistency.",
+      "Service": "AWS IAM"
+    },
+    {
+      "Threat ID": "SEC_019",
+      "Threat Name": "Inline IAM Policy Allowing Blocked KMS Actions",
+      "Source": "Overly Permissive Policies Attached to Users/Roles/Groups",
+      "Target": "AWS IAM Entities (User/Role/Group)",
+      "Description": "Inline policies that enable kms:Decrypt or kms:ReEncryptFrom can expose sensitive data to unauthorized use.",
+      "Mitigation": "Remove or restrict KMS actions in inline policies, ensuring only authorized roles can decrypt or re-encrypt data.",
+      "Service": "AWS IAM / AWS KMS"
+    },
+    {
+      "Threat ID": "SEC_020",
+      "Threat Name": "Inline Policies in IAM Entities",
+      "Source": "Scattered Policy Management",
+      "Target": "AWS IAM Users, Roles, or Groups",
+      "Description": "Inline policies complicate policy management and auditing, increasing the risk of accidental over-privileging or policy drift.",
+      "Mitigation": "Detach inline policies and use centrally managed policies (customer-managed or AWS-managed) for consistent governance.",
+      "Service": "AWS IAM"
+    },
+    {
+      "Threat ID": "SEC_021",
+      "Threat Name": "Weak or Incomplete IAM Password Policy",
+      "Source": "Brute Force or Credential-Stuffing Attacks",
+      "Target": "AWS IAM User Passwords",
+      "Description": "A password policy lacking complexity, rotation, or length requirements makes user accounts easier to compromise.",
+      "Mitigation": "Enforce strong password policies (minimum length ≥ 14, require upper/lowercase, symbols, numbers, and rotation) for IAM users.",
+      "Service": "AWS IAM"
+    },
+    {
+      "Threat ID": "SEC_022",
+      "Threat Name": "IAM Policy with Admin Access Statement",
+      "Source": "Potential Privilege Escalation",
+      "Target": "AWS IAM Policy",
+      "Description": "Policies that grant admin (e.g., '*') privileges can be exploited if attached to compromised or improperly assigned principals.",
+      "Mitigation": "Remove or limit admin privileges in IAM policies, adhering to least privilege by specifying only necessary actions and resources.",
+      "Service": "AWS IAM"
+    },
+    {
+      "Threat ID": "SEC_023",
+      "Threat Name": "IAM Policy with Full Access",
+      "Source": "Overly Broad Permissions",
+      "Target": "AWS IAM Policy",
+      "Description": "Full access policies provide near-unrestricted actions on AWS resources, elevating the risk of unintended or malicious changes.",
+      "Mitigation": "Replace full access statements with more specific, least-privilege statements that grant only the actions genuinely required.",
+      "Service": "AWS IAM"
+    },
+    {
+      "Threat ID": "SEC_024",
+      "Threat Name": "Root Access Key in Use",
+      "Source": "Root Credentials Overexposure",
+      "Target": "AWS Root User",
+      "Description": "The root account’s access key, if compromised, grants unlimited control over the AWS account with no opportunity for privilege separation.",
+      "Mitigation": "Remove or deactivate root access keys and rely on individual IAM users/roles with least-privilege access.",
+      "Service": "AWS IAM"
+    },
+    {
+      "Threat ID": "SEC_025",
+      "Threat Name": "User Not in Any IAM Group",
+      "Source": "Scattered User Privileges",
+      "Target": "AWS IAM User",
+      "Description": "An IAM user without group membership may have privileges that are difficult to track or manage, risking policy drift.",
+      "Mitigation": "Assign IAM users to groups with appropriate policies, ensuring consistent identity management and simpler reviews.",
+      "Service": "AWS IAM"
+    },
+    {
+      "Threat ID": "SEC_026",
+      "Threat Name": "IAM User Lacking MFA",
+      "Source": "Stolen or Phished Credentials",
+      "Target": "AWS IAM User Login",
+      "Description": "Without MFA, a compromised password grants immediate account access, elevating the risk of unauthorized activities.",
+      "Mitigation": "Enforce MFA for all IAM users with console access, using virtual or hardware MFA devices for enhanced security.",
+      "Service": "AWS IAM"
+    },
+    {
+      "Threat ID": "SEC_027",
+      "Threat Name": "IAM User Directly Attached to Policies",
+      "Source": "Uncontrolled User-Level Privileges",
+      "Target": "AWS IAM User",
+      "Description": "Users with policies attached directly (instead of group or role) can lead to confusion and oversights in managing privileges.",
+      "Mitigation": "Detach direct user policies in favor of group- or role-based policy management for simpler, centralized governance.",
+      "Service": "AWS IAM"
+    },
+    {
+      "Threat ID": "SEC_028",
+      "Threat Name": "Unused IAM Credentials",
+      "Source": "Old or Forgotten IAM Access Keys/Passwords",
+      "Target": "AWS IAM User",
+      "Description": "Stale credentials may remain active and unmonitored, posing a security risk if discovered by attackers.",
+      "Mitigation": "Disable or remove credentials that have not been used in a defined period (e.g., 90 days) to minimize exposure.",
+      "Service": "AWS IAM"
+    },
+    {
+      "Threat ID": "SEC_029",
+      "Threat Name": "SSH Port 22 (or Other Common Ports) Open to the World",
+      "Source": "External Attackers Scanning Common Ports",
+      "Target": "EC2 Security Group",
+      "Description": "Allowing unrestricted inbound traffic on well-known ports can lead to brute force attacks or unauthorized remote access.",
+      "Mitigation": "Restrict SSH/RDP and other vulnerable ports to specific IP ranges or use VPN/bastion for secure access.",
+      "Service": "Amazon EC2"
+    },
+    {
+      "Threat ID": "SEC_030",
+      "Threat Name": "KMS CMK Scheduled for Deletion",
+      "Source": "Accidental or Premature Key Removal",
+      "Target": "AWS KMS Customer-Managed Key",
+      "Description": "Scheduling a CMK for deletion may break dependent services or hamper data decryption if not properly planned.",
+      "Mitigation": "Review CMK usage before scheduling deletion, and cancel the deletion if the key is still required for data access.",
+      "Service": "AWS KMS"
+    },
+    {
+      "Threat ID": "SEC_031",
+      "Threat Name": "No Hardware MFA for Root Account",
+      "Source": "Root Account Credentials Targeted by Attackers",
+      "Target": "AWS Root User",
+      "Description": "Root user is the highest-privilege account; lacking a hardware MFA increases the likelihood of successful credential-based attacks.",
+      "Mitigation": "Enable a hardware MFA device for the root account to provide the strongest possible protection against unauthorized access.",
+      "Service": "AWS IAM"
+    },
+    {
+      "Threat ID": "SEC_032",
+      "Threat Name": "Root Account Without MFA",
+      "Source": "Compromised Root Credentials",
+      "Target": "AWS Root User",
+      "Description": "If root login has no MFA, a stolen password alone can grant full account control, an extremely high-impact breach scenario.",
+      "Mitigation": "Require MFA on the root account; avoid using root for daily tasks and rely on IAM roles for administrative needs.",
+      "Service": "AWS IAM"
+    },
+    {
+      "Threat ID": "SEC_033",
+      "Threat Name": "S3 Account-Level Public Access Block Disabled",
+      "Source": "Public Internet Access to S3 Buckets",
+      "Target": "S3 Buckets (Account-Level)",
+      "Description": "Not enabling Public Access Blocks at the account level can result in accidental exposure of newly created buckets or objects.",
+      "Mitigation": "Enable account-level public access block to enforce no public exposure by default for all S3 buckets in the account.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "SEC_034",
+      "Threat Name": "S3 Bucket Logging Disabled",
+      "Source": "Unmonitored Access or Changes",
+      "Target": "Amazon S3 Bucket",
+      "Description": "Without server access logs, suspicious activity remains undiscovered, hindering post-incident analysis.",
+      "Mitigation": "Enable S3 access logging to an appropriate bucket, ensuring thorough records of access events.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "SEC_035",
+      "Threat Name": "Secrets Not Rotated",
+      "Source": "Stale or Compromised Secrets",
+      "Target": "AWS Secrets Manager Secret",
+      "Description": "Secrets that are never rotated remain vulnerable if leaked or brute-forced, allowing attackers indefinite usage.",
+      "Mitigation": "Enable Secrets Manager rotation, scheduling regular automated updates to minimize risk of long-lived credentials.",
+      "Service": "AWS Secrets Manager"
+    },
+    {
+      "Threat ID": "SEC_036",
+      "Threat Name": "Failed or Incomplete Secret Rotation",
+      "Source": "Misconfigured Rotation Function or Access Issues",
+      "Target": "AWS Secrets Manager Secret",
+      "Description": "If scheduled secret rotation fails silently, older credentials remain in use, weakening security posture.",
+      "Mitigation": "Monitor rotation success checks; configure notifications or alerts when a rotation fails or is incomplete.",
+      "Service": "AWS Secrets Manager"
+    },
+    {
+      "Threat ID": "SEC_037",
+      "Threat Name": "Security Hub Disabled",
+      "Source": "Fragmented Security Findings",
+      "Target": "AWS Account Security Posture",
+      "Description": "Without Security Hub, findings from multiple services remain siloed, complicating overall threat detection and compliance management.",
+      "Mitigation": "Enable AWS Security Hub to consolidate and prioritize findings across GuardDuty, Inspector, Macie, and other services.",
+      "Service": "AWS Security Hub"
+    },
+    {
+      "Threat ID": "SEC_038",
+      "Threat Name": "Default VPC Security Group Left Open",
+      "Source": "Inadvertent Wide-Open Access in Default SG",
+      "Target": "Default Security Group in a VPC",
+      "Description": "If the default security group allows inbound or outbound traffic from any source, attackers can exploit open communication paths.",
+      "Mitigation": "Close or restrict rules in the default SG, and create specialized security groups to control inbound/outbound traffic strictly.",
+      "Service": "Amazon VPC"
+    },
+    {
+      "Threat ID": "SEC_039",
+      "Threat Name": "Unrestricted Ports Beyond Authorized Range",
+      "Source": "Unauthorized Network Scans or Exploits",
+      "Target": "EC2 Security Group",
+      "Description": "Exposing ports beyond a known authorized set (e.g., 443) may enable attackers to connect through less-monitored channels.",
+      "Mitigation": "Limit allowed inbound TCP ports to only those explicitly needed, referencing a formal list of authorized ports.",
+      "Service": "Amazon VPC / Amazon EC2"
+    },
+    {
+      "Threat ID": "SEC_040",
+      "Threat Name": "WAFv2 Logging Disabled",
+      "Source": "Undetected Malicious Web Requests",
+      "Target": "AWS WAFv2 Web ACL",
+      "Description": "Without logging, potentially harmful traffic patterns or rule hits cannot be audited, impeding threat analysis and response.",
+      "Mitigation": "Enable WAFv2 logs and send them to S3 or CloudWatch Logs for monitoring and correlation with other security data.",
+      "Service": "AWS WAF"
+    }
+  ]
+}
+

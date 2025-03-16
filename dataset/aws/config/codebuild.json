@@ -1,0 +1,59 @@
+{
+  "threats": [
+    {
+      "Threat ID": "CODEBUILD_001",
+      "Threat Name": "Unencrypted Build Artifacts",
+      "Source": "Anyone with Access to Artifact Storage",
+      "Target": "AWS CodeBuild Project Artifacts",
+      "Description": "If build artifacts are not encrypted, malicious actors or unauthorized users with access to the artifact storage may view or modify sensitive data.",
+      "Mitigation": "Enable server-side encryption for CodeBuild project artifacts, using an AWS KMS customer-managed key to control and audit access.",
+      "Service": "AWS CodeBuild"
+    },
+    {
+      "Threat ID": "CODEBUILD_002",
+      "Threat Name": "Privileged Build Environment",
+      "Source": "Compromised Build Container or Malicious Build Steps",
+      "Target": "AWS CodeBuild Project",
+      "Description": "Running a privileged container can grant the build process overly broad access to the host or other AWS resources, potentially leading to privilege escalation.",
+      "Mitigation": "Configure the build environment to run in non-privileged mode, limiting the build container's ability to access host resources.",
+      "Service": "AWS CodeBuild"
+    },
+    {
+      "Threat ID": "CODEBUILD_003",
+      "Threat Name": "AWS Credentials in Environment Variables",
+      "Source": "Unauthorized Retrieval of Environment Variables",
+      "Target": "AWS CodeBuild Project",
+      "Description": "Embedding AWS credentials in environment variables risks accidental exposure in logs or build artifacts, allowing attackers to reuse these credentials.",
+      "Mitigation": "Use AWS Systems Manager Parameter Store or AWS Secrets Manager for secure credential retrieval, avoiding credentials in plain text environment variables.",
+      "Service": "AWS CodeBuild"
+    },
+    {
+      "Threat ID": "CODEBUILD_004",
+      "Threat Name": "Build Logging Disabled",
+      "Source": "Undetected Misuse or Errors in the Build Process",
+      "Target": "AWS CodeBuild Project",
+      "Description": "Without logging enabled, suspicious or erroneous build activities may go unnoticed, complicating audits and incident investigations.",
+      "Mitigation": "Enable detailed logging in CodeBuild projects to capture build output and diagnostic information for review and forensics.",
+      "Service": "AWS CodeBuild"
+    },
+    {
+      "Threat ID": "CODEBUILD_005",
+      "Threat Name": "Unencrypted S3 Logs",
+      "Source": "Unauthorized Access to Log Storage",
+      "Target": "AWS CodeBuild Logs in S3",
+      "Description": "Storing build logs unencrypted in S3 could allow malicious actors who gain access to the S3 bucket to read potentially sensitive information.",
+      "Mitigation": "Enable default encryption on the S3 bucket or specify SSE-KMS for log delivery to protect build logs at rest.",
+      "Service": "AWS CodeBuild"
+    },
+    {
+      "Threat ID": "CODEBUILD_006",
+      "Threat Name": "Insecure or Invalid Source Repository URL",
+      "Source": "Untrusted or Spoofed Git Repository",
+      "Target": "AWS CodeBuild Project Source",
+      "Description": "If the build project references an unverified or malicious repository URL, attackers can inject malicious code or compromise the software supply chain.",
+      "Mitigation": "Verify and validate repository URLs, ensuring they come from trusted sources (e.g., AWS CodeCommit, GitHub with secure authentication).",
+      "Service": "AWS CodeBuild"
+    }
+  ]
+}
+

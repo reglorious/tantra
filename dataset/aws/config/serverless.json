@@ -1,0 +1,158 @@
+{
+  "threats": [
+    {
+      "Threat ID": "SLS_001",
+      "Threat Name": "API Gateway Not Protected by WAF",
+      "Source": "Malicious Web Traffic",
+      "Target": "Amazon API Gateway Stage",
+      "Description": "Without WAF protection, attackers can exploit unfiltered Layer 7 vulnerabilities (e.g., SQL injection, XSS).",
+      "Mitigation": "Associate an AWS WAF with the API Gateway stage to block or filter malicious requests using appropriate rules.",
+      "Service": "Amazon API Gateway"
+    },
+    {
+      "Threat ID": "SLS_002",
+      "Threat Name": "API Gateway Cache Unsecured",
+      "Source": "Attackers Exploiting Unencrypted Cache",
+      "Target": "Amazon API Gateway Cache",
+      "Description": "An unencrypted or disabled cache may expose sensitive data or degrade performance if caching is not used at all.",
+      "Mitigation": "Enable and encrypt the API Gateway cache to protect data in transit and at rest, reducing latency and safeguarding content.",
+      "Service": "Amazon API Gateway"
+    },
+    {
+      "Threat ID": "SLS_003",
+      "Threat Name": "Execution Logging Disabled",
+      "Source": "Unseen Malicious Activities in API Calls",
+      "Target": "Amazon API Gateway Stages",
+      "Description": "Without execution logging, suspicious or erroneous requests cannot be audited or diagnosed, hindering forensic analysis.",
+      "Mitigation": "Enable execution logs and integrate them with monitoring solutions (e.g., CloudWatch Logs) for real-time detection and troubleshooting.",
+      "Service": "Amazon API Gateway"
+    },
+    {
+      "Threat ID": "SLS_004",
+      "Threat Name": "API Gateway Insecure (HTTP) Connections",
+      "Source": "Network Interception or Data Tampering",
+      "Target": "Amazon API Gateway Stage",
+      "Description": "Allowing non-HTTPS connections exposes traffic to interception, leading to data leaks or request manipulation.",
+      "Mitigation": "Require SSL/TLS for all inbound requests, enforcing secure endpoints in Amazon API Gateway stages.",
+      "Service": "Amazon API Gateway"
+    },
+    {
+      "Threat ID": "SLS_005",
+      "Threat Name": "X-Ray Tracing Not Enabled",
+      "Source": "Undetected Latency or Malicious Calls",
+      "Target": "Amazon API Gateway Stage",
+      "Description": "Without AWS X-Ray, pinpointing performance issues or malicious request patterns across microservices becomes more challenging.",
+      "Mitigation": "Enable AWS X-Ray tracing to track end-to-end request behavior and quickly identify performance bottlenecks or anomalies.",
+      "Service": "Amazon API Gateway"
+    },
+    {
+      "Threat ID": "SLS_006",
+      "Threat Name": "No DynamoDB Autoscaling",
+      "Source": "Sudden Usage Spikes or Resource Exhaustion",
+      "Target": "Amazon DynamoDB Table",
+      "Description": "A table without autoscaling may fail to handle peak loads or rapidly changing traffic, leading to throttled requests and partial service outages.",
+      "Mitigation": "Enable DynamoDB autoscaling to automatically adjust read/write capacity, preventing performance bottlenecks.",
+      "Service": "Amazon DynamoDB"
+    },
+    {
+      "Threat ID": "SLS_007",
+      "Threat Name": "DynamoDB Not in Backup Plan",
+      "Source": "Accidental or Malicious Data Deletion",
+      "Target": "Amazon DynamoDB Table",
+      "Description": "Tables left out of a backup plan risk permanent data loss if they are corrupted or deleted without a recoverable snapshot.",
+      "Mitigation": "Use AWS Backup or an equivalent solution to periodically back up DynamoDB tables, ensuring point-in-time recovery.",
+      "Service": "Amazon DynamoDB"
+    },
+    {
+      "Threat ID": "SLS_008",
+      "Threat Name": "Point-in-Time Recovery Disabled",
+      "Source": "Accidental Overwrites or Partial Deletes",
+      "Target": "Amazon DynamoDB Table",
+      "Description": "Without PITR, you cannot revert to a consistent state before an erroneous write or delete, losing potentially critical data.",
+      "Mitigation": "Enable PITR for DynamoDB tables to restore data to any second within the retention period, preventing irreversible loss.",
+      "Service": "Amazon DynamoDB"
+    },
+    {
+      "Threat ID": "SLS_009",
+      "Threat Name": "Unencrypted DynamoDB Table",
+      "Source": "Unauthorized Access to Underlying Storage",
+      "Target": "Amazon DynamoDB Table",
+      "Description": "Data stored without encryption can be read by anyone with physical or system-level access, risking confidentiality breaches.",
+      "Mitigation": "Enable server-side encryption with AWS KMS to secure DynamoDB data at rest and control key usage via IAM policies.",
+      "Service": "Amazon DynamoDB"
+    },
+    {
+      "Threat ID": "SLS_010",
+      "Threat Name": "DynamoDB Throughput Quota Exceeded",
+      "Source": "Excessive Reads/Writes or Traffic Spikes",
+      "Target": "Amazon DynamoDB Table",
+      "Description": "If the table throughput limit is reached, requests will be throttled, causing elevated latency or partial service failures.",
+      "Mitigation": "Monitor usage and scale read/write capacity (manually or via autoscaling) to avoid surpassing account-level throughput limits.",
+      "Service": "Amazon DynamoDB"
+    },
+    {
+      "Threat ID": "SLS_011",
+      "Threat Name": "Unbounded Lambda Concurrency",
+      "Source": "Runaway Lambda Invocations",
+      "Target": "AWS Lambda Function",
+      "Description": "Without concurrency limits, a burst of function invocations may exhaust account resources or cause downstream service overload.",
+      "Mitigation": "Configure concurrency limits to cap the maximum number of simultaneous function executions and protect other resources.",
+      "Service": "AWS Lambda"
+    },
+    {
+      "Threat ID": "SLS_012",
+      "Threat Name": "No Dead-Letter Queue Configured",
+      "Source": "Unhandled Lambda Failures",
+      "Target": "AWS Lambda Function",
+      "Description": "If a function invocation fails repeatedly without a DLQ or on-failure destination, errors can go unnoticed and data may be lost.",
+      "Mitigation": "Assign a DLQ or destination to capture failed events, enabling investigation and replay of unprocessed requests.",
+      "Service": "AWS Lambda"
+    },
+    {
+      "Threat ID": "SLS_013",
+      "Threat Name": "Lambda Publicly Accessible",
+      "Source": "Anonymous Internet Clients",
+      "Target": "AWS Lambda Function",
+      "Description": "If the Lambda function allows public invocation, attackers can repeatedly call it, leading to resource exhaustion or malicious activities.",
+      "Mitigation": "Disallow public access using resource-based policies or IAM, restricting invocation to authorized principals or VPC endpoints.",
+      "Service": "AWS Lambda"
+    },
+    {
+      "Threat ID": "SLS_014",
+      "Threat Name": "Lambda Deployed Outside VPC",
+      "Source": "Public Network Connectivity",
+      "Target": "AWS Lambda Function",
+      "Description": "A function not in a VPC may communicate over the public internet, increasing exposure to potential attackers and limiting private resource access.",
+      "Mitigation": "Deploy the function within a VPC to control inbound/outbound traffic using security groups and route tables, securing private communications.",
+      "Service": "AWS Lambda"
+    },
+    {
+      "Threat ID": "SLS_015",
+      "Threat Name": "Single-AZ Lambda VPC Deployment",
+      "Source": "Availability Zone Outage",
+      "Target": "AWS Lambda Function in VPC",
+      "Description": "Using a single subnet or AZ for Lambda in a VPC can cause downtime if that AZ becomes unavailable, impacting application availability.",
+      "Mitigation": "Configure multiple subnets across different AZs for the Lambda function to ensure high availability and fault tolerance.",
+      "Service": "AWS Lambda"
+    },
+    {
+      "Threat ID": "SLS_016",
+      "Threat Name": "No VPC Endpoint for execute-api",
+      "Source": "Public Internet for API Calls",
+      "Target": "AWS Private Resources Accessing API Gateway",
+      "Description": "If requests to API Gateway rely on public endpoints, they can be intercepted or blocked, limiting security and reliability.",
+      "Mitigation": "Create a VPC endpoint for the execute-api service to route internal traffic privately without traversing the public internet.",
+      "Service": "Amazon API Gateway / AWS PrivateLink"
+    },
+    {
+      "Threat ID": "SLS_017",
+      "Threat Name": "No VPC Endpoint for Lambda",
+      "Source": "Public Connectivity for Function Calls",
+      "Target": "AWS Lambda Service",
+      "Description": "If the Lambda service is accessed via the public internet, connections are exposed to potential eavesdropping or disruption.",
+      "Mitigation": "Configure a VPC endpoint for Lambda so that internal resources can invoke functions securely over private networking.",
+      "Service": "AWS Lambda / AWS PrivateLink"
+    }
+  ]
+}
+

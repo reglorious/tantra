@@ -1,0 +1,32 @@
+{
+  "threats": [
+    {
+      "Threat ID": "ECR_001",
+      "Threat Name": "Image Scanning Disabled",
+      "Source": "Potentially Malicious or Vulnerable Images",
+      "Target": "Amazon ECR Private Repository",
+      "Description": "If image scanning is not enabled, malicious or vulnerable container images could be stored and deployed without detection.",
+      "Mitigation": "Enable image scanning in Amazon ECR to automatically check for known vulnerabilities in container images.",
+      "Service": "Amazon ECR"
+    },
+    {
+      "Threat ID": "ECR_002",
+      "Threat Name": "No Lifecycle Policy Configured",
+      "Source": "Accidental Deployment of Outdated or Vulnerable Images",
+      "Target": "Amazon ECR Private Repository",
+      "Description": "Repositories lacking a lifecycle policy can accumulate outdated images, increasing the chance that old, unpatched images are used in production.",
+      "Mitigation": "Implement a lifecycle policy to automatically retire or delete old images, reducing the risk of deploying vulnerable versions.",
+      "Service": "Amazon ECR"
+    },
+    {
+      "Threat ID": "ECR_003",
+      "Threat Name": "Tag Mutability",
+      "Source": "Malicious Actors or Internal Mistakes Overwriting Existing Images",
+      "Target": "Amazon ECR Private Repository",
+      "Description": "When tag immutability is disabled, an attacker or careless process could overwrite existing tags with malicious or unintended images, compromising integrity.",
+      "Mitigation": "Enable tag immutability on ECR repositories to prevent image tags from being overwritten, ensuring the integrity of deployed images.",
+      "Service": "Amazon ECR"
+    }
+  ]
+}
+

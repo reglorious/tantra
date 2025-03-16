@@ -1,0 +1,86 @@
+{
+  "threats": [
+    {
+      "Threat ID": "ECS_001",
+      "Threat Name": "No Container Insights Monitoring",
+      "Source": "Misconfiguration or Lack of Monitoring Setup",
+      "Target": "AWS ECS Cluster",
+      "Description": "If Container Insights is disabled, security issues and performance anomalies can go undetected due to limited visibility into container metrics and logs.",
+      "Mitigation": "Enable Container Insights on ECS clusters for real-time monitoring and alerting of resource usage, performance issues, and potential attacks.",
+      "Service": "Amazon ECS"
+    },
+    {
+      "Threat ID": "ECS_002",
+      "Threat Name": "Privileged Container Execution",
+      "Source": "Compromised or Malicious Container",
+      "Target": "AWS ECS TaskDefinition",
+      "Description": "Containers allowed to run in privileged mode can escalate privileges, potentially impacting the underlying host or other containers.",
+      "Mitigation": "Configure task definitions so that containers run without privilege, restricting access to host resources and kernel capabilities.",
+      "Service": "Amazon ECS"
+    },
+    {
+      "Threat ID": "ECS_003",
+      "Threat Name": "Unrestricted Write Access in Container Filesystem",
+      "Source": "Malicious or Accidental Changes within a Container",
+      "Target": "AWS ECS TaskDefinition",
+      "Description": "Containers with read-write filesystem access can modify data or system files, leading to unauthorized changes or potential persistent compromise.",
+      "Mitigation": "Define container filesystems as read-only whenever possible, limiting the container’s ability to alter critical files or host resources.",
+      "Service": "Amazon ECS"
+    },
+    {
+      "Threat ID": "ECS_004",
+      "Threat Name": "Outdated Fargate Platform Version",
+      "Source": "Vulnerabilities in Older Platform Versions",
+      "Target": "AWS ECS Fargate Service",
+      "Description": "Running containers on an older platform version may leave them susceptible to known exploits and missing critical patches or features.",
+      "Mitigation": "Deploy services on the latest Fargate platform version to ensure updated security patches and enhanced features.",
+      "Service": "Amazon ECS"
+    },
+    {
+      "Threat ID": "ECS_005",
+      "Threat Name": "Secrets in Environment Variables",
+      "Source": "Leaked or Logged Credentials",
+      "Target": "AWS ECS TaskDefinition",
+      "Description": "Storing secret data in environment variables can result in accidental disclosure via logs or unauthorized reads of environment properties.",
+      "Mitigation": "Use AWS Secrets Manager or AWS Systems Manager Parameter Store with task definition secrets support to avoid placing secrets directly in environment variables.",
+      "Service": "Amazon ECS"
+    },
+    {
+      "Threat ID": "ECS_006",
+      "Threat Name": "No Memory Hard Limit",
+      "Source": "Excessive Resource Consumption",
+      "Target": "AWS ECS TaskDefinition",
+      "Description": "Without a configured memory hard limit, a container can consume all available memory on the host, potentially causing service outages or denial of service.",
+      "Mitigation": "Set appropriate memory limits in the task definition to prevent a single container from exhausting host resources.",
+      "Service": "Amazon ECS"
+    },
+    {
+      "Threat ID": "ECS_007",
+      "Threat Name": "Container Running as root",
+      "Source": "Compromised Container with Elevated Privileges",
+      "Target": "AWS ECS TaskDefinition",
+      "Description": "Containers running as the root user have broader access to the container environment and, if escaped, can compromise the underlying host.",
+      "Mitigation": "Specify a non-root user in the task definition to reduce potential impact from compromised containers.",
+      "Service": "Amazon ECS"
+    },
+    {
+      "Threat ID": "ECS_008",
+      "Threat Name": "Host PID Mode Exposure",
+      "Source": "Containers Sharing Process Namespace with Host",
+      "Target": "AWS ECS TaskDefinition",
+      "Description": "Enabling host PID mode gives containers visibility into and potential interaction with host processes, increasing the risk of privilege escalation.",
+      "Mitigation": "Disable host PID mode to isolate container processes from the underlying host’s process namespace.",
+      "Service": "Amazon ECS"
+    },
+    {
+      "Threat ID": "ECS_009",
+      "Threat Name": "User Not Specified with Host Networking Mode",
+      "Source": "Containers Overriding Host-Level Access",
+      "Target": "AWS ECS TaskDefinition (Host Networking)",
+      "Description": "When running in host network mode, omitting a specific user in the task definition allows containers to run with root privileges, increasing lateral movement risk on the host.",
+      "Mitigation": "Include a non-root user in the task definition to restrict privileges when using host networking mode.",
+      "Service": "Amazon ECS"
+    }
+  ]
+}
+

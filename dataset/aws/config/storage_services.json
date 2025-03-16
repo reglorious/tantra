@@ -1,0 +1,239 @@
+{
+  "threats": [
+    {
+      "Threat ID": "STORAGE_001",
+      "Threat Name": "Insufficient Backup Frequency and Retention",
+      "Source": "Administrator or Automated Backup Misconfiguration",
+      "Target": "AWS Backup Plan",
+      "Description": "A backup plan with inadequate backup frequency or short retention periods increases the risk of data loss and non-compliance with recovery objectives.",
+      "Mitigation": "Set backup plans to run at least daily and retain backups for a minimum recommended period (e.g., 35 days) to ensure sufficient restore points.",
+      "Service": "AWS Backup"
+    },
+    {
+      "Threat ID": "STORAGE_002",
+      "Threat Name": "Unencrypted Recovery Points",
+      "Source": "Anyone with Access to Backup Storage",
+      "Target": "AWS Backup Recovery Points",
+      "Description": "Storing backups without encryption at rest allows unauthorized individuals with storage-level access to view or extract sensitive data.",
+      "Mitigation": "Enable server-side encryption (SSE) for recovery points using KMS, controlling key usage via IAM policies.",
+      "Service": "AWS Backup"
+    },
+    {
+      "Threat ID": "STORAGE_003",
+      "Threat Name": "Manual Deletion of Recovery Points",
+      "Source": "Accidental or Malicious Admin Actions",
+      "Target": "AWS Backup Vault",
+      "Description": "If manual deletion is not disabled, essential recovery points can be prematurely or maliciously removed, leading to irreversible data loss.",
+      "Mitigation": "Disable manual deletion in the backup vault or implement retention lock policies to ensure critical backups cannot be deleted prematurely.",
+      "Service": "AWS Backup"
+    },
+    {
+      "Threat ID": "STORAGE_004",
+      "Threat Name": "Insufficient Recovery Point Retention",
+      "Source": "Misconfigured Backup Policies",
+      "Target": "AWS Backup Recovery Points",
+      "Description": "Recovery points that do not meet a minimum retention period increase the risk of losing restore capabilities for older or infrequently changed data.",
+      "Mitigation": "Define and enforce minimum retention policies (e.g., 35 days) for each backup plan to maintain adequate historical restore points.",
+      "Service": "AWS Backup"
+    },
+    {
+      "Threat ID": "STORAGE_005",
+      "Threat Name": "EBS Volumes Not Enrolled in Backup Plan",
+      "Source": "Lack of Automated Backups",
+      "Target": "Amazon EBS Volumes",
+      "Description": "Unprotected EBS volumes without a backup plan risk permanent data loss in the event of accidental deletion, corruption, or hardware failure.",
+      "Mitigation": "Enroll all critical EBS volumes in AWS Backup plans to ensure regular, automated snapshots for data recovery.",
+      "Service": "Amazon EBS"
+    },
+    {
+      "Threat ID": "STORAGE_006",
+      "Threat Name": "Publicly Restorable EBS Snapshots",
+      "Source": "Unauthorized External Users",
+      "Target": "Amazon EBS Snapshots",
+      "Description": "When EBS snapshots are publicly restorable, attackers can clone or read the underlying data without authorization, compromising sensitive information.",
+      "Mitigation": "Restrict snapshot access to specific AWS accounts or roles, and avoid granting public restorable permissions on snapshots.",
+      "Service": "Amazon EBS"
+    },
+    {
+      "Threat ID": "STORAGE_007",
+      "Threat Name": "EBS Not Encrypted by Default",
+      "Source": "Unauthorized Access to Underlying Storage",
+      "Target": "Amazon EBS Volumes",
+      "Description": "If EBS encryption-by-default is disabled, newly created volumes may store unencrypted data, increasing exposure if the underlying storage is compromised.",
+      "Mitigation": "Enable EBS encryption by default for new volumes and manage keys via AWS KMS to protect data at rest.",
+      "Service": "Amazon EBS"
+    },
+    {
+      "Threat ID": "STORAGE_008",
+      "Threat Name": "EFS Not Encrypted at Rest",
+      "Source": "Unauthorized Access to File System Data",
+      "Target": "Amazon EFS File Systems",
+      "Description": "Unencrypted EFS data can be read by anyone who gains access to the underlying storage, leading to potential data leakage or compromise.",
+      "Mitigation": "Enable encryption at rest for EFS using AWS KMS customer-managed keys, ensuring data is protected from unauthorized access.",
+      "Service": "Amazon EFS"
+    },
+    {
+      "Threat ID": "STORAGE_009",
+      "Threat Name": "EFS File Systems Not in Backup Plan",
+      "Source": "Accidental or Malicious Deletion Without Recovery",
+      "Target": "Amazon EFS File Systems",
+      "Description": "EFS file systems not protected by a backup plan cannot be restored if data is accidentally deleted or corrupted.",
+      "Mitigation": "Add EFS resources to AWS Backup plans to create periodic, recoverable backups of file system data.",
+      "Service": "Amazon EFS"
+    },
+    {
+      "Threat ID": "STORAGE_010",
+      "Threat Name": "FSx Resources Not Backed Up",
+      "Source": "Hardware Failure or Deletion Without Recovery",
+      "Target": "Amazon FSx File Systems",
+      "Description": "Unprotected FSx file systems risk permanent data loss in the event of hardware failure or accidental deletion.",
+      "Mitigation": "Include FSx resources in AWS Backup plans to ensure file systems are periodically backed up and recoverable.",
+      "Service": "Amazon FSx"
+    },
+    {
+      "Threat ID": "STORAGE_011",
+      "Threat Name": "S3 Account-Level Public Access",
+      "Source": "Public Internet Accessing Buckets",
+      "Target": "Amazon S3 Buckets (Account-Level)",
+      "Description": "Allowing public access at the account level can expose all S3 buckets and objects to the internet, risking unauthorized data reads/writes.",
+      "Mitigation": "Enable account-level S3 Public Access Blocks to prevent buckets and objects from being publicly accessible by default.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "STORAGE_012",
+      "Threat Name": "S3 Bucket ACL Usage",
+      "Source": "Misconfigured Bucket or External Entities",
+      "Target": "Amazon S3 Bucket",
+      "Description": "If ACLs are used and not strictly controlled, they may allow unauthorized users to read or write data, leading to potential data leakage or tampering.",
+      "Mitigation": "Prohibit or restrict ACL usage, using bucket policies and IAM instead for granular, auditable access control.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "STORAGE_013",
+      "Threat Name": "S3 Default Lock Not Enabled",
+      "Source": "Accidental or Malicious Data Deletion",
+      "Target": "Amazon S3 Bucket Objects",
+      "Description": "Without object lock, important objects can be overwritten or deleted, causing permanent data loss.",
+      "Mitigation": "Enable S3 Object Lock in compliance or governance mode to prevent object version deletions for a specified retention period.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "STORAGE_014",
+      "Threat Name": "S3 Bucket Level Public Access",
+      "Source": "Anonymous or Malicious Internet Users",
+      "Target": "Amazon S3 Bucket",
+      "Description": "A bucket configured for public access could expose sensitive data or allow unauthorized parties to upload or modify objects.",
+      "Mitigation": "Disable public bucket-level access and use strict IAM policies and access point configurations for private data handling.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "STORAGE_015",
+      "Threat Name": "S3 Bucket Logging Disabled",
+      "Source": "Undetected Suspicious Access or Changes",
+      "Target": "Amazon S3 Bucket",
+      "Description": "If S3 server access logging is not enabled, unauthorized activity on the bucket remains untracked, hindering investigations and forensics.",
+      "Mitigation": "Enable server access logs for S3 buckets to track all requests and integrate logs with security monitoring solutions.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "STORAGE_016",
+      "Threat Name": "Overly Permissive Bucket Policy",
+      "Source": "Broad Access Granted in Bucket Policies",
+      "Target": "Amazon S3 Bucket",
+      "Description": "A bucket policy that grants overly permissive access, such as to any AWS account or public principal, risks data exposure or tampering.",
+      "Mitigation": "Restrict bucket policy principals and actions to the minimum necessary, removing wildcard or public entries.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "STORAGE_017",
+      "Threat Name": "Public Read Enabled",
+      "Source": "Anonymous or Unauthorized Internet Users",
+      "Target": "Amazon S3 Bucket",
+      "Description": "Buckets or objects allowed for public read can leak sensitive information or intellectual property, exposing data to unauthorized viewers.",
+      "Mitigation": "Set the bucket policy to explicitly deny public reads, and rely on IAM roles or user-based access for legitimate read requests.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "STORAGE_018",
+      "Threat Name": "Public Write Enabled",
+      "Source": "External Malicious Users",
+      "Target": "Amazon S3 Bucket",
+      "Description": "With public write, attackers can upload malicious or illegal content, overwrite existing files, or conduct data sabotage.",
+      "Mitigation": "Disable public write permissions via bucket policy, ACL, or access blocks, restricting upload rights to authorized principals.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "STORAGE_019",
+      "Threat Name": "Replication Not Enabled",
+      "Source": "Single Region or Infrastructure Failure",
+      "Target": "Amazon S3 Bucket",
+      "Description": "Buckets without replication risk data loss or unavailability if the primary region or underlying infrastructure fails.",
+      "Mitigation": "Configure cross-region replication for critical data to maintain multiple copies across different AWS regions.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "STORAGE_020",
+      "Threat Name": "Server-Side Encryption Disabled",
+      "Source": "Anyone with Access to Underlying Storage",
+      "Target": "Amazon S3 Bucket Objects",
+      "Description": "Unencrypted S3 objects can be viewed by unauthorized actors if the storage layer is compromised.",
+      "Mitigation": "Enable server-side encryption (SSE) with SSE-S3 or SSE-KMS to protect data at rest and control encryption keys.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "STORAGE_021",
+      "Threat Name": "HTTP Requests Allowed to S3 Bucket",
+      "Source": "Network Attackers Intercepting Unencrypted Traffic",
+      "Target": "Amazon S3 Bucket",
+      "Description": "Permitting insecure (HTTP) connections can allow eavesdroppers to read or modify data in transit between clients and S3.",
+      "Mitigation": "Require SSL/TLS (HTTPS) for all bucket access and block insecure connections at the bucket policy level.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "STORAGE_022",
+      "Threat Name": "No Versioning Enabled",
+      "Source": "Accidental or Overwriting Updates",
+      "Target": "Amazon S3 Bucket",
+      "Description": "Buckets without versioning lose historical versions of objects, making it difficult to recover from unintended deletions or modifications.",
+      "Mitigation": "Enable versioning on S3 buckets to preserve older object versions and facilitate recovery from overwrites or deletions.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "STORAGE_023",
+      "Threat Name": "Missing KMS-Based Encryption by Default",
+      "Source": "Attackers Exploiting Default Encryption Gaps",
+      "Target": "Amazon S3 Bucket Objects",
+      "Description": "If S3 default encryption using KMS is disabled, new uploads may remain unencrypted or rely on potentially less secure SSE modes.",
+      "Mitigation": "Configure S3 default encryption with AWS KMS for fine-grained key management and explicit access controls.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "STORAGE_024",
+      "Threat Name": "No Event Notifications Enabled",
+      "Source": "Unmonitored Bucket Changes",
+      "Target": "Amazon S3 Bucket",
+      "Description": "Lacking event notifications means changes to bucket objects (e.g., uploads, deletions) may go undetected, hindering timely responses to suspicious activities.",
+      "Mitigation": "Enable and route S3 event notifications to AWS Lambda, SNS, or SQS to monitor and react to object-level events in real time.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "STORAGE_025",
+      "Threat Name": "No Lifecycle Policy",
+      "Source": "Excessive Data Accumulation or Retaining Old Versions",
+      "Target": "Amazon S3 Bucket",
+      "Description": "Without lifecycle policies, unused or older object versions may remain indefinitely, increasing costs and potential exposure of outdated data.",
+      "Mitigation": "Configure S3 lifecycle rules to transition or expire data based on usage and retention requirements, reducing clutter and risk.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "STORAGE_026",
+      "Threat Name": "Unprotected S3 Buckets Not in Backup Plan",
+      "Source": "Accidental or Malicious Object Deletion",
+      "Target": "Amazon S3 Bucket",
+      "Description": "If S3 resources are not included in a backup plan, objects deleted or overwritten cannot be restored from a backup.",
+      "Mitigation": "Include critical S3 buckets in AWS Backup or third-party solutions to regularly snapshot and retain copies of stored data.",
+      "Service": "Amazon S3"
+    }
+  ]
+}
+
