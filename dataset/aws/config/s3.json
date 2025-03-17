@@ -1,5 +1,4 @@
-{
-  "threats": [
+[
     {
       "Threat ID": "S3_001",
       "Threat Name": "Account-Level Public Access",
@@ -126,6 +125,4 @@
       "Mitigation": "Enable and enforce version lifecycle policies (S3_VERSION_LIFECYCLE_POLICY_CHECK) to automatically manage or expire older object versions.",
       "Service": "Amazon S3"
     }
-  ]
-}
-
+]

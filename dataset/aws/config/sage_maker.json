@@ -1,5 +1,4 @@
-{
-  "threats": [
+[
     {
       "Threat ID": "SM_001",
       "Threat Name": "Unencrypted Endpoint Configuration",
@@ -27,6 +26,4 @@
       "Mitigation": "Disable direct internet access and run the notebook in a private subnet within a VPC, restricting incoming and outgoing connections.",
       "Service": "Amazon SageMaker"
     }
-  ]
-}
-
+]

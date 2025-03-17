@@ -1,5 +1,4 @@
-{
-  "threats": [
+[
     {
       "Threat ID": "EFS_001",
       "Threat Name": "Unrestricted Root Directory Access",
@@ -36,6 +35,4 @@
       "Mitigation": "Use AWS Backup or other solutions to include EFS in a formal backup plan, ensuring point-in-time restore capabilities.",
       "Service": "Amazon EFS"
     }
-  ]
-}
-
+]

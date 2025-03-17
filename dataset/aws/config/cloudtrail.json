@@ -1,5 +1,4 @@
-{
-  "threats": [
+[
     {
       "Threat ID": "CT_001",
       "Threat Name": "CloudTrail Not Enabled",
@@ -63,6 +62,4 @@
       "Mitigation": "Enable multi-region CloudTrail to ensure all API activity across all regions is captured for comprehensive visibility.",
       "Service": "AWS CloudTrail"
     }
-  ]
-}
-
+]

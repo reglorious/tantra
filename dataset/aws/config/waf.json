@@ -1,5 +1,4 @@
-{
-  "threats": [
+[
     {
       "Threat ID": "WAF_001",
       "Threat Name": "ALB Not Protected by WAF",
@@ -46,5 +45,3 @@
       "Service": "AWS WAF"
     }
   ]
-}
-

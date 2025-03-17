@@ -1,5 +1,4 @@
-{
-  "threats": [
+[
     {
       "Threat ID": "SEC_001",
       "Threat Name": "Stale IAM Access Keys",
@@ -361,5 +360,3 @@
       "Service": "AWS WAF"
     }
   ]
-}
-

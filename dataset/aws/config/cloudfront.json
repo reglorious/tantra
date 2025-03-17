@@ -1,5 +1,4 @@
-{
-  "threats": [
+[
     {
       "Threat ID": "CF_001",
       "Threat Name": "Access Logging Disabled",
@@ -90,6 +89,4 @@
       "Mitigation": "Enforce HTTPS-only viewer connections to protect the confidentiality and integrity of content delivered by CloudFront.",
       "Service": "Amazon CloudFront"
     }
-  ]
-}
-
+]

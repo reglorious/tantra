@@ -1,5 +1,4 @@
-{
-  "threats": [
+[
     {
       "Threat ID": "EKS_001",
       "Threat Name": "Outdated EKS Cluster Version",
@@ -36,6 +35,4 @@
       "Mitigation": "Enable envelope encryption for EKS secrets using AWS KMS customer-managed keys to protect data at rest and limit key usage.",
       "Service": "Amazon EKS"
     }
-  ]
-}
-
+]

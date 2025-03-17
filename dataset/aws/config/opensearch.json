@@ -1,5 +1,4 @@
-{
-  "threats": [
+[
     {
       "Threat ID": "OS_001",
       "Threat Name": "Access Control Not Enabled",
@@ -72,6 +71,4 @@
       "Mitigation": "Enable node-to-node encryption to ensure that traffic within the cluster remains secure and cannot be intercepted or altered.",
       "Service": "Amazon OpenSearch Service"
     }
-  ]
-}
-
+]

@@ -1,5 +1,4 @@
-{
-  "threats": [
+[
     {
       "Threat ID": "ECR_001",
       "Threat Name": "Image Scanning Disabled",
@@ -27,6 +26,5 @@
       "Mitigation": "Enable tag immutability on ECR repositories to prevent image tags from being overwritten, ensuring the integrity of deployed images.",
       "Service": "Amazon ECR"
     }
-  ]
-}
+]
 

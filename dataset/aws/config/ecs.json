@@ -1,5 +1,4 @@
-{
-  "threats": [
+[
     {
       "Threat ID": "ECS_001",
       "Threat Name": "No Container Insights Monitoring",
@@ -81,6 +80,5 @@
       "Mitigation": "Include a non-root user in the task definition to restrict privileges when using host networking mode.",
       "Service": "Amazon ECS"
     }
-  ]
-}
+]
 

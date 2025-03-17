@@ -1,5 +1,4 @@
-{
-  "threats": [
+[
     {
       "Threat ID": "LAMBDA_001",
       "Threat Name": "Missing Dead-Letter Queue",
@@ -36,5 +35,4 @@
       "Mitigation": "Configure Lambda functions to use multiple AZ subnets for improved fault tolerance and availability.",
       "Service": "AWS Lambda"
     }
-  ]
-}
+]

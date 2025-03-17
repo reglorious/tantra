@@ -1,5 +1,4 @@
-{
-  "threats": [
+[
     {
       "Threat ID": "SLS_001",
       "Threat Name": "API Gateway Not Protected by WAF",
@@ -153,6 +152,4 @@
       "Mitigation": "Configure a VPC endpoint for Lambda so that internal resources can invoke functions securely over private networking.",
       "Service": "AWS Lambda / AWS PrivateLink"
     }
-  ]
-}
-
+]

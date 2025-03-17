@@ -1,5 +1,4 @@
-{
-  "threats": [
+[
     {
       "Threat ID": "RDS_001",
       "Threat Name": "Backups Disabled",
@@ -153,5 +152,4 @@
       "Mitigation": "Enable storage encryption using a customer-managed KMS key to secure data at rest.",
       "Service": "Amazon RDS"
     }
-  ]
-}
+]

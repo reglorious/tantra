@@ -1,5 +1,4 @@
-{
-  "threats": [
+[
     {
       "Threat ID": "NETFW_001",
       "Threat Name": "Unsafe Default Action for Fragment Packets",
@@ -36,5 +35,4 @@
       "Mitigation": "Ensure each stateless rule group includes well-defined rules that match and take action on relevant traffic patterns.",
       "Service": "AWS Network Firewall"
     }
-  ]
-}
+]

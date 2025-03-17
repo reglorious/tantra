@@ -1,5 +1,4 @@
-{
-  "threats": [
+[
     {
       "Threat ID": "STORAGE_001",
       "Threat Name": "Insufficient Backup Frequency and Retention",
@@ -234,6 +233,4 @@
       "Mitigation": "Include critical S3 buckets in AWS Backup or third-party solutions to regularly snapshot and retain copies of stored data.",
       "Service": "Amazon S3"
     }
-  ]
-}
-
+]

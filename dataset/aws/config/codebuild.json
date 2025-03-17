@@ -1,5 +1,4 @@
-{
-  "threats": [
+[
     {
       "Threat ID": "CODEBUILD_001",
       "Threat Name": "Unencrypted Build Artifacts",
@@ -54,6 +53,4 @@
       "Mitigation": "Verify and validate repository URLs, ensuring they come from trusted sources (e.g., AWS CodeCommit, GitHub with secure authentication).",
       "Service": "AWS CodeBuild"
     }
-  ]
-}
-
+]
