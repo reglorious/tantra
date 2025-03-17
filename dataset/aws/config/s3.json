@@ -1,0 +1,131 @@
+{
+  "threats": [
+    {
+      "Threat ID": "S3_001",
+      "Threat Name": "Account-Level Public Access",
+      "Source": "Unauthenticated or Anonymous Internet Users",
+      "Target": "Amazon S3 Account-wide Configuration",
+      "Description": "If account-level public access blocks are not enabled or incorrectly configured (BlockPublicAcls, BlockPublicPolicy, IgnorePublicAcls, RestrictPublicBuckets), newly created buckets could expose data publicly by default.",
+      "Mitigation": "Enable and enforce S3 account-level public access blocks to prevent unintended public exposures for all buckets.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "S3_002",
+      "Threat Name": "Bucket ACL Misuse",
+      "Source": "Malicious or Unprivileged Users Exploiting ACLs",
+      "Target": "Amazon S3 Bucket",
+      "Description": "Bucket ACLs can unintentionally grant read/write permissions if configured improperly, allowing attackers or unauthorized users to list or modify data.",
+      "Mitigation": "Prohibit or limit ACL usage (e.g., S3_BUCKET_ACL_PROHIBITED), relying on bucket policies and IAM for access control.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "S3_003",
+      "Threat Name": "Object Lock Not Enabled",
+      "Source": "Accidental or Malicious Deletion/Overwrite",
+      "Target": "Amazon S3 Bucket Objects",
+      "Description": "Disabling default object lock increases the risk of permanent data loss from overwrites or deletions before they can be reversed.",
+      "Mitigation": "Enable default bucket lock (S3_BUCKET_DEFAULT_LOCK_ENABLED) to protect against unintended deletions and ensure immutability.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "S3_004",
+      "Threat Name": "Public Bucket Access at Bucket Level",
+      "Source": "Anonymous Users on the Internet",
+      "Target": "Amazon S3 Bucket",
+      "Description": "If a bucket allows public access at the bucket level, sensitive data may be exposed to anyone online, posing a high risk of data leakage.",
+      "Mitigation": "Block public bucket policies (S3_BUCKET_LEVEL_PUBLIC_ACCESS_PROHIBITED) and rely on private policies with least-privilege configurations.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "S3_005",
+      "Threat Name": "Disabled Logging",
+      "Source": "Unmonitored Access or Changes",
+      "Target": "Amazon S3 Bucket",
+      "Description": "Buckets without logging enabled provide no detailed records of read/write actions, delaying detection of suspicious behavior and complicating investigations.",
+      "Mitigation": "Enable server access logging (S3_BUCKET_LOGGING_ENABLED) and configure logs to be stored securely for auditing and compliance.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "S3_006",
+      "Threat Name": "Public Read Access",
+      "Source": "Unauthorized Users Reading Bucket Data",
+      "Target": "Amazon S3 Bucket",
+      "Description": "Allowing public read access can expose sensitive bucket objects to any internet user, leading to potential data leaks.",
+      "Mitigation": "Prohibit public read access (S3_BUCKET_PUBLIC_READ_PROHIBITED) by using block public access settings, bucket policies, or ACL rules.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "S3_007",
+      "Threat Name": "Public Write Access",
+      "Source": "Malicious or Anonymous Actors Uploading/Modifying Data",
+      "Target": "Amazon S3 Bucket",
+      "Description": "A bucket permitting public writes allows attackers to upload malicious content or overwrite legitimate data, potentially leading to sabotage or malicious hosting.",
+      "Mitigation": "Enable bucket policies or ACLs that prohibit public writes (S3_BUCKET_PUBLIC_WRITE_PROHIBITED).",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "S3_008",
+      "Threat Name": "Replication Not Enabled",
+      "Source": "Single-Region Outage or Data Loss",
+      "Target": "Amazon S3 Bucket",
+      "Description": "Without cross-region replication, a regional disaster or corruption event could lead to data loss and disrupted operations.",
+      "Mitigation": "Enable cross-region replication (S3_BUCKET_REPLICATION_ENABLED) for critical data to maintain copies in different regions.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "S3_009",
+      "Threat Name": "Execution of Blacklisted S3 Actions",
+      "Source": "Internal Malicious Actors or Excessive Privileges",
+      "Target": "Amazon S3 Bucket Policies and Configurations",
+      "Description": "Certain sensitive S3 actions (e.g., DeleteBucketPolicy, PutBucketAcl) can compromise security if misused by unauthorized individuals.",
+      "Mitigation": "Prohibit blacklisted actions (S3_BUCKET_BLACKLISTED_ACTIONS_PROHIBITED) via IAM or bucket policies to prevent unauthorized execution.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "S3_010",
+      "Threat Name": "Non-SSL Requests",
+      "Source": "Network Eavesdroppers intercepting HTTP Traffic",
+      "Target": "Amazon S3 Bucket",
+      "Description": "Allowing HTTP connections can leak or corrupt data in transit, exposing object content or credentials.",
+      "Mitigation": "Enforce HTTPS-only traffic (S3_BUCKET_SSL_REQUESTS_ONLY) to safeguard data and requests from interception or tampering.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "S3_011",
+      "Threat Name": "No Versioning",
+      "Source": "Accidental Deletion or Overwrites",
+      "Target": "Amazon S3 Bucket",
+      "Description": "Without versioning, older versions of objects are overwritten or removed, making it impossible to restore data changes or undo deletions.",
+      "Mitigation": "Enable bucket versioning (S3_BUCKET_VERSIONING_ENABLED) to preserve object history and recover from accidental overwrites.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "S3_012",
+      "Threat Name": "Unencrypted Bucket or Default Encryption Disabled",
+      "Source": "Anyone with Physical or Administrative Access to Underlying Storage",
+      "Target": "Amazon S3 Bucket Objects",
+      "Description": "Storing data unencrypted at rest can expose sensitive information if the storage layer is compromised or incorrectly accessed.",
+      "Mitigation": "Require default encryption (S3_DEFAULT_ENCRYPTION_KMS or SSE-S3) to ensure all objects are encrypted at rest by default.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "S3_013",
+      "Threat Name": "No Event Notifications",
+      "Source": "Unmonitored Bucket Object Operations",
+      "Target": "Amazon S3 Bucket",
+      "Description": "Without event notifications, changes in bucket contents go untracked, delaying detection of malicious uploads or data deletions.",
+      "Mitigation": "Enable and configure S3 event notifications (S3_EVENT_NOTIFICATIONS_ENABLED) to monitor object-level operations in real time.",
+      "Service": "Amazon S3"
+    },
+    {
+      "Threat ID": "S3_014",
+      "Threat Name": "Incomplete Version Lifecycle Policy",
+      "Source": "Accumulation of Obsolete Object Versions",
+      "Target": "Amazon S3 Bucket",
+      "Description": "Buckets storing multiple versions of objects without a lifecycle policy may face high storage costs and accidental use of outdated data.",
+      "Mitigation": "Enable and enforce version lifecycle policies (S3_VERSION_LIFECYCLE_POLICY_CHECK) to automatically manage or expire older object versions.",
+      "Service": "Amazon S3"
+    }
+  ]
+}
+
