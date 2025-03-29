@@ -1,3 +1,8 @@
+
+# This script is the first one in the list. It converts many different files we have generated 
+# with the help of LLM (ChatGPT with 4o) into a single file. The script also unifies the names of AWS 
+# services of different kind uniformly (Ex: ALB, Load Balancer etc to "AWS Load Balancer") 
+
 import os
 import json
 import pandas as pd
@@ -24,7 +29,7 @@ def read_json_files(directory):
     df = pd.DataFrame(all_data)
     return df
 # Example usage
-directory_path = "../dataset"  # Replace with your actual directory
+directory_path = ".." + os.path.sep + "dataset"  # Replace with your actual directory
 threats_df = read_json_files(directory_path)
 
 # Display the DataFrame
